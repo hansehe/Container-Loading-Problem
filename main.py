@@ -138,9 +138,9 @@ if __name__ == "__main__":
             # Generate the initial population
             population = gen.generate_pop(box_params, NUM_OF_INDIVIDUALS, ROTATIONS)
 
-            gen = 0
+            generations = 0
             average_fitness = []
-            while gen < NUM_OF_GENERATIONS:
+            while generations < NUM_OF_GENERATIONS:
                 population, fitness = ft.evaluate(population, truck_dimension, box_params, total_value)
                 population = ns.rank(population, fitness)
                 offsprings = re.crossover(deepcopy(population), PC, k=K)
@@ -148,7 +148,7 @@ if __name__ == "__main__":
                 population = ss.select(population, offsprings, truck_dimension, box_params, total_value,
                                        NUM_OF_INDIVIDUALS)
                 average_fitness.append(calc_average_fitness(population))
-                gen += 1
+                generations += 1
             results = []
 
             # Storing the final Rank 1 solutions
